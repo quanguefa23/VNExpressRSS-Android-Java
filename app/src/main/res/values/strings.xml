@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">VNExpressRSS</string>
+    <!-- Title text for the empty view, which describes the empty dog house image [CHAR LIMIT=50] -->
+    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+
+    <!-- Subtitle text for the empty view that prompts the user to add a pet [CHAR LIMIT=50] -->
+    <string name="empty_view_subtitle_text">Không tìm thấy kết nối Internet</string>
+    <string name="mock_title">Chelsea thất thủ trên sân nhà vì VAR</string>
+    <string name="mock_summary">Bàn thắng gây tranh cãi của Dan Gosling khiến Chelsea thua Bournemouth 0-1 ở vòng 17 Ngoại hạng Anh, tối 14/12</string>
+</resources>
