@@ -3,7 +3,7 @@ Read news in VNExpress, utilize RSS API provided by VNExpress (https://vnexpress
 
 Technology and architecture:  
 - Main: MVP, RecyclerView (with DiffUtil), HTTP request and RSS Parser.
-- Other: Dagger 2, LiveData, Animation, Threadpool, CardView, WebView.
+- Others: Dagger 2, LiveData, Animation, Threadpool, CardView, WebView.
 
 Screenshot:  
   
