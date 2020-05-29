@@ -1,13 +1,21 @@
-package com.example.recyclerview;
+package com.example.recyclerview.presentation.SelectTopic;
 
+import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class SelectTopicActivity extends AppCompatActivity {
+import com.example.recyclerview.R;
+import com.example.recyclerview.presentation.ShowHeadline.ShowHeadlineActivity;
 
+/**
+ * Shows all topics for users' choice
+ * This simple activity does not need a presenter
+ */
+public class SelectTopicActivity extends AppCompatActivity{
+    @UiThread
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

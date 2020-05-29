@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.example.recyclerview.presentation.ReadNews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import com.example.recyclerview.R;
+
+/**
+ * Provide a webView to see the content of the news
+ * This simple activity does not need a presenter
+ */
 public class ReadNewsActivity extends AppCompatActivity {
 
     WebView webView;

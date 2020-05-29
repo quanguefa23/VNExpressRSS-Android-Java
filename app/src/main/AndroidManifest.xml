@@ -6,21 +6,22 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReadNewsActivity"></activity>
-        <activity android:name=".SelectTopicActivity">
+        <activity android:name=".presentation.ReadNews.ReadNewsActivity"></activity>
+        <activity android:name=".presentation.SelectTopic.SelectTopicActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowHeadlineActivity"></activity>
+        <activity android:name=".presentation.ShowHeadline.ShowHeadlineActivity"></activity>
     </application>
 
 </manifest>

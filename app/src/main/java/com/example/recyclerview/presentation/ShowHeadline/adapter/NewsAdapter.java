@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.example.recyclerview.presentation.ShowHeadline.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,14 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.recyclerview.entity.News;
+import com.example.recyclerview.R;
 
 import java.util.List;
 
+/**
+ * RecycleView Adapter for list News
+ */
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     private int layout;
@@ -50,12 +56,57 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         return listNews.size();
     }
 
+    public void updateDataAndNotify(List<News> newListNews) {
+        final NewsDiffCallback diffCallback = new NewsDiffCallback(listNews, newListNews);
+        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
+
+        listNews.clear();
+        listNews.addAll(newListNews);
+        diffResult.dispatchUpdatesTo(this);
+    }
+
+    public List<News> getListNews() {
+        return listNews;
+    }
+
+    public class NewsDiffCallback extends DiffUtil.Callback {
+        private final List<News> oldList;
+        private final List<News> newList;
+
+        public NewsDiffCallback(List<News> oldData, List<News> newData) {
+            this.oldList = oldData;
+            this.newList = newData;
+        }
+
+        @Override
+        public int getOldListSize() {
+            return (oldList != null) ? oldList.size() : 0;
+        }
+
+        @Override
+        public int getNewListSize() {
+            return (newList != null) ? newList.size() : 0;
+        }
+
+        @Override
+        public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+            return oldList.get(oldItemPosition).equals(newList.get(newItemPosition));
+        }
+
+        @Override
+        public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+            return true;
+        }
+    }
+
     // Define listener member variable
     private OnItemClickListener listener;
+
     // Define the listener interface
     public interface OnItemClickListener {
         void onItemClick(View itemView, int position);
     }
+
     // Define the method that allows the parent activity or fragment to define the listener
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;

@@ -1,11 +1,12 @@
-package com.example.recyclerview;
+package com.example.recyclerview.entity;
 
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RSSContract {
-    public static final String RSS_BASE_URL = "https://vnexpress.net/rss";
+/**
+ * Contract to track URL and TITLE by keywords
+ */
+public class AppContract {
     public static final Map<String, String> URLS;
     public static final Map<String, String> TITLES;
 

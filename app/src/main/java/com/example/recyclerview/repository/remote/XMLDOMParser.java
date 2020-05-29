@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.example.recyclerview.repository.remote;
 
 import android.util.Log;
 
@@ -16,52 +16,46 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-public class XMLDOMParser {
-    public Document getDocument(String xml)
-    {
-        Document document = null;
+/**
+ * Support class to parse XML data into specific elements
+ */
+class XMLDOMParser {
+    Document getDocument(String xml) {
+        Document document;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        try{
+        try {
             DocumentBuilder db = factory.newDocumentBuilder();
             InputSource is = new InputSource();
             is.setCharacterStream(new StringReader(xml));
             is.setEncoding("UTF-8");
             document = db.parse(is);
-        }catch(ParserConfigurationException e)
-        {
+        }
+        catch (Exception e) {
             Log.e("Error: ", e.getMessage(), e);
             return null;
         }
-        catch (SAXException e) {
-            Log.e("Error: ", e.getMessage(), e);
-            return null;
-        }
-        catch(IOException e){
-            Log.e("Error: ", e.getMessage(), e);
-            return null;
-        }
+
         return document;
     }
-    public String getValue(Element item, String name)
-    {
+
+    String getValue(Element item, String name) {
         NodeList nodes = item.getElementsByTagName(name);
         return this.getTextNodeValue(nodes.item(0));
     }
 
-    public String getValueSummary(Element item, String name)
-    {
+    String getValueSummary(Element item, String name) {
         NodeList nodes = item.getElementsByTagName(name);
         Node elem = nodes.item(0);
         Node child = elem.getFirstChild();
         return child.getNodeValue();
     }
 
-    private final String getTextNodeValue(Node elem) {
+    private String getTextNodeValue(Node elem) {
         Node child;
-        if( elem != null){
-            if (elem.hasChildNodes()){
-                for( child = elem.getFirstChild(); child != null; child = child.getNextSibling() ){
-                    if( child.getNodeType() == Node.TEXT_NODE  ){
+        if (elem != null) {
+            if (elem.hasChildNodes()) {
+                for (child = elem.getFirstChild(); child != null; child = child.getNextSibling()) {
+                    if (child.getNodeType() == Node.TEXT_NODE  ){
                         return child.getNodeValue();
                     }
                 }
