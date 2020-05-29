@@ -33,7 +33,6 @@ public class ShowHeadlineActivity extends AppCompatActivity implements ShowHeadl
     RecyclerView recyclerView;
     NewsAdapter adapter;
     View emptyView;
-    boolean isFirstLoad = true;
     String topicName;
 
     @Override
@@ -89,12 +88,10 @@ public class ShowHeadlineActivity extends AppCompatActivity implements ShowHeadl
         emptyView.setVisibility(android.view.View.INVISIBLE);
         adapter.updateDataAndNotify(list);
 
-        if (isFirstLoad) {
-            LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(
-                    ShowHeadlineActivity.this, R.anim.layout_animation_from_bottom);
-            recyclerView.setLayoutAnimation(animation);
-            isFirstLoad = false;
-        }
+        // animation
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(
+                ShowHeadlineActivity.this, R.anim.layout_animation_from_bottom);
+        recyclerView.setLayoutAnimation(animation);
     }
 
     @Override
